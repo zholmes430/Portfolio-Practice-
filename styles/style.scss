@@ -1,3 +1,11 @@
+$primary-background: #ffb6b6;
+
+@mixin background-stuff() {
+    background-color: $primary-background;
+    padding: 16px;
+    text-align: center;
+}
+
 body {
     margin: 0;
     background-color: #a5a5a5;
@@ -7,19 +15,14 @@ body {
     flex-direction: column;
     justify-content: space-between;
 }
-$primary-background: #ffb6b6;
-
-@mixin background-stuff() {
-    background-color: $primary-background;
-    padding: 16px;
-    text-align: center;
-}
 
 header {
     @include background-stuff();
 
     .logo-name {
-        margin-bottom: 24px;
+        @media screen and (max-width: 600px) {
+            margin-bottom: 24px;
+        }
 
         .name {
             font-size: 28px;
@@ -42,10 +45,39 @@ header {
 
         a {
             text-decoration: none;
-            color: #339ef0;
+            color: #00a3d4;
         }
     }
-    
+}
+
+@media screen and (min-width: 600px) {
+    header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        .logo-name {
+            // margin-bottom: 0; this will be taken care in mobile view
+
+            .name {
+                margin-bottom: 0;
+            }
+        }
+
+        .nav-items {
+            width: 50%;
+        }
+    }
+}
+
+main {
+    section {
+        .jumbotron {
+            img {
+                width: 100vw;
+            }
+        }
+    } 
 }
 
 footer {
@@ -73,3 +105,14 @@ footer {
         }
     }
 }
+
+@media screen and (min-width: 600px) {
+    footer {
+        .social-media {
+            width: 50%;            
+            margin-right:auto;
+            margin-left: auto;
+        }
+    }
+}
+
